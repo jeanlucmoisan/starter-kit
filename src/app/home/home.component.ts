@@ -2,7 +2,9 @@ import 'rxjs/add/operator/finally';
 
 import { Component, OnInit } from '@angular/core';
 
-import { QuoteService } from './quote.service';
+import { DepartmentService } from './department.service';
+
+import { Department } from './../models/department.model';
 
 @Component({
   selector: 'app-home',
@@ -11,16 +13,16 @@ import { QuoteService } from './quote.service';
 })
 export class HomeComponent implements OnInit {
 
-  quote: string;
+  departments: Department[] = [];
   isLoading: boolean;
 
-  constructor(private quoteService: QuoteService) {}
+  constructor(private departmentService: DepartmentService) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.quoteService.getRandomQuote({ category: 'dev' })
+    this.departmentService.getAllDepartments()
       .finally(() => { this.isLoading = false; })
-      .subscribe((quote: string) => { this.quote = quote; });
+      .subscribe((departments:Department[]) => { this.departments = departments; });
   }
 
 }
