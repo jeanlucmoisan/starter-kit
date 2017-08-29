@@ -8,13 +8,18 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { DepartmentService } from './department.service';
 
+import { CovalentMessageModule } from '@covalent/core';
+import { CovalentDataTableModule } from '@covalent/core';
+
 @NgModule({
   imports: [
     CommonModule,
     TranslateModule,
     CoreModule,
     SharedModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    CovalentMessageModule,
+    CovalentDataTableModule
   ],
   declarations: [
     HomeComponent

@@ -2,8 +2,9 @@ import 'rxjs/add/operator/finally';
 
 import { Component, OnInit } from '@angular/core';
 
-import { DepartmentService } from './department.service';
+import { ITdDataTableColumn } from '@covalent/core';
 
+import { DepartmentService } from './department.service';
 import { Department } from './../models/department.model';
 
 @Component({
@@ -15,7 +16,10 @@ export class HomeComponent implements OnInit {
 
   departments: Department[] = [];
   isLoading: boolean;
-
+  columns: ITdDataTableColumn[] = [
+    { name:'name', label:'dapartment'}
+  ];
+  
   constructor(private departmentService: DepartmentService) {}
 
   ngOnInit() {
